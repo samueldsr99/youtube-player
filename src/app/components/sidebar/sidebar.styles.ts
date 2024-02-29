@@ -12,10 +12,15 @@ export const Aside = styled.aside`
   flex-direction: column;
 `;
 
+export const HomeLinkWrapper = styled(Link)`
+  display: flex;
+  align-items: center;
+  place-self: center;
+`;
+
 export const YoutubeIcon = styled(BaseYoutubeIcon)`
   width: ${({ theme }) => theme.spacing(22.5)};
   height: ${({ theme }) => theme.spacing(5)};
-  place-self: center;
 `;
 
 export const HomeIcon = styled(BaseHomeIcon)`

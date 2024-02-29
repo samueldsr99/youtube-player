@@ -2,6 +2,7 @@ import {
   Aside,
   Divider,
   HomeIcon,
+  HomeLinkWrapper,
   IconButton,
   LinkItem,
   NavigationLinkItem,
@@ -30,7 +31,9 @@ const links = [
 const Sidebar = () => {
   return (
     <Aside>
-      <YoutubeIcon />
+      <HomeLinkWrapper to="/">
+        <YoutubeIcon />
+      </HomeLinkWrapper>
 
       <NavigationLinks>
         <NavigationLinkItem to="/" $isActive>
