@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Hide .env* related except .env.example
+.env*
+!.env.example
