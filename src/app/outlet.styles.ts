@@ -11,3 +11,7 @@ export const Main = styled.main`
   max-width: 1800px;
   margin: 0 auto;
 `;
+
+export const Content = styled.div`
+  padding: ${({ theme }) => theme.spacing(8, 4)};
+`;

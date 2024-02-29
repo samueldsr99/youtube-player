@@ -2,9 +2,7 @@ import styled from "styled-components";
 
 import { media } from "@/ui/theme/breakpoints";
 
-export const Root = styled.div`
-  padding: ${({ theme }) => theme.spacing(8, 4)};
-`;
+export const Root = styled.div``;
 
 export const Grid = styled.div`
   display: grid;

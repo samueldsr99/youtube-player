@@ -1,14 +1,24 @@
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 
+import SearchInput from "./components/search-input/search-input";
 import Sidebar from "./components/sidebar";
-import { Main, Root } from "./outlet.styles";
+import { Content, Main, Root } from "./outlet.styles";
 
 export default function IndexOutlet() {
+  const navigate = useNavigate();
+
   return (
     <Root>
       <Sidebar />
       <Main>
-        <Outlet />
+        <SearchInput
+          onSearch={(q) =>
+            navigate({ pathname: "/", search: q ? `?q=${q}` : "" })
+          }
+        />
+        <Content>
+          <Outlet />
+        </Content>
       </Main>
     </Root>
   );
