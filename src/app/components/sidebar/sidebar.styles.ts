@@ -6,6 +6,9 @@ import BaseXIcon from "@/ui/icons/x-icon";
 import BaseYoutubeIcon from "@/ui/icons/youtube-icon";
 
 export const Aside = styled.aside`
+  position: sticky;
+  height: 100vh;
+
   padding: ${({ theme }) => theme.spacing(6, 4)};
   width: ${({ theme }) => theme.spacing(60)};
   display: flex;
@@ -82,8 +85,7 @@ export const NavigationLinkItem = styled(LinkItem)<NavigationLinkItemProps>`
   align-items: center;
   gap: ${({ theme }) => theme.spacing(2)};
 
-  background-color: ${({ theme, $isActive }) =>
-    $isActive ? theme.colors.gray[200] : "transparent"};
+  background-color: ${({ theme, $isActive }) => ($isActive ? theme.colors.gray[200] : "transparent")};
 `;
 
 export const IconButton = styled.button`

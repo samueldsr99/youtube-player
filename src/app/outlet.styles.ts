@@ -6,6 +6,8 @@ export const Root = styled.div`
 `;
 
 export const Main = styled.main`
+  max-height: 100vh;
+  overflow: auto;
   flex: 1;
   padding: ${({ theme }) => theme.spacing(8, 4)};
   max-width: 1800px;
@@ -14,4 +16,5 @@ export const Main = styled.main`
 
 export const Content = styled.div`
   padding: ${({ theme }) => theme.spacing(8, 4)};
+  height: 100%;
 `;
