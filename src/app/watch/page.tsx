@@ -25,7 +25,7 @@ export default function WatchPage() {
   const { data: relatedVideos } = useQuery({
     queryKey: querykeys.youtube.search({ q: relatedSearch }),
     queryFn: () => services.youtube.search({ q: relatedSearch }),
-    enabled: !!video ?? false,
+    enabled: !!video,
   });
 
   if (!video) {
