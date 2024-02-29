@@ -52,7 +52,7 @@ const variants = {
   },
   button: {
     fontSize: "1rem",
-    fontWeight: fontWeights.semibold,
+    fontWeight: fontWeights.medium,
   },
   caption: {
     fontSize: "0.75rem",

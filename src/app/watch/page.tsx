@@ -3,6 +3,13 @@ import { useQuery } from "@tanstack/react-query";
 
 import services from "@/lib/api/services";
 import querykeys from "@/lib/querykeys";
+import SaveIcon from "@/ui/icons/save-icon";
+
+import VideoPreviewCard from "../components/video-preview-card/video-preview-card";
+import { Grid } from "../page.styles";
+
+import VideoPlayer from "./components/video-player/video-player";
+import { ActionsContainer, SaveButton, Title } from "./page.styles";
 
 export default function WatchPage() {
   const { videoId } = useParams();
@@ -13,7 +20,31 @@ export default function WatchPage() {
     enabled: !!videoId,
   });
 
-  console.log(video);
+  const relatedSearch = `${video?.owner} ${video?.title}`;
 
-  return <>Watch page for video {videoId}</>;
+  const { data: relatedVideos } = useQuery({
+    queryKey: querykeys.youtube.search({ q: relatedSearch }),
+    queryFn: () => services.youtube.search({ q: relatedSearch }),
+    enabled: !!video ?? false,
+  });
+
+  if (!video) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div>
+      <Title>{video.title}</Title>
+      <VideoPlayer video={video} />
+
+      <ActionsContainer>
+        <SaveButton>
+          <SaveIcon />
+          Save
+        </SaveButton>
+      </ActionsContainer>
+
+      <Grid>{relatedVideos?.map((video) => <VideoPreviewCard key={video.id.videoId} preview={video} />)}</Grid>
+    </div>
+  );
 }
