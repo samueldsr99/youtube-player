@@ -18,11 +18,7 @@ export default function IndexPage() {
 
   return (
     <Root>
-      <Grid>
-        {videos?.map((video) => (
-          <VideoPreview key={video.id.videoId} preview={video} />
-        ))}
-      </Grid>
+      <Grid>{videos?.map((video) => <VideoPreview key={video.id.videoId} preview={video} />)}</Grid>
     </Root>
   );
 }

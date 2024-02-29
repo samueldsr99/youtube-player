@@ -1,13 +1,7 @@
 import { VideoPreview } from "@/lib/models/video-preview";
 import { formatNumber } from "@/lib/utils";
 
-import {
-  ChannelName,
-  Img,
-  Root,
-  Title,
-  Views,
-} from "./video-preview-card.styles";
+import { ChannelName, Img, Root, Title, Views } from "./video-preview-card.styles";
 
 export interface VideoPreviewCardProps {
   preview: VideoPreview;
@@ -16,12 +10,7 @@ export interface VideoPreviewCardProps {
 export default function VideoPreviewCard({ preview }: VideoPreviewCardProps) {
   return (
     <Root to={`/watch/${preview.id.videoId}`}>
-      <Img
-        src={preview.snippet.thumbnails.url}
-        alt={preview.snippet.title}
-        width={300}
-        height={220}
-      />
+      <Img src={preview.snippet.thumbnails.url} alt={preview.snippet.title} width={300} height={220} />
 
       <div>
         <Title>{preview.title}</Title>
