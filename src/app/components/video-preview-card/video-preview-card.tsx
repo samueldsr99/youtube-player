@@ -15,7 +15,9 @@ export default function VideoPreviewCard({ preview }: VideoPreviewCardProps) {
       <div>
         <Title>{preview.title}</Title>
         <ChannelName>{preview.channelName}</ChannelName>
-        <Views>{formatNumber(Number(preview.views))} views</Views>
+        <Views>
+          {formatNumber(Number(preview.views))} views • {preview.snippet.publishedAt}
+        </Views>
       </div>
     </Root>
   );
