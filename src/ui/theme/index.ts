@@ -1,8 +1,10 @@
 import { DefaultTheme } from "styled-components";
-import { colors } from "./colors";
-import { typography } from "./typography";
+
 import { breakpoints, media } from "./breakpoints";
+import { colors } from "./colors";
+import { mixins } from "./mixins";
 import { spacing } from "./spacing";
+import { typography } from "./typography";
 
 export const theme = {
   colors,
@@ -10,4 +12,5 @@ export const theme = {
   breakpoints,
   media,
   spacing,
+  mixins,
 } satisfies DefaultTheme;
