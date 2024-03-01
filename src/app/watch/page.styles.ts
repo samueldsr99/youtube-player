@@ -4,6 +4,10 @@ export const Title = styled.h2`
   ${({ theme }) => theme.typography.variants.h2};
 `;
 
+export const RelatedVideosTitle = styled.h3`
+  ${({ theme }) => theme.typography.variants.h3};
+`;
+
 export const MetadataContainer = styled.div`
   margin-top: ${({ theme }) => theme.spacing(2)};
   display: flex;

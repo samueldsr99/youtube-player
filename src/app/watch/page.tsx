@@ -10,7 +10,7 @@ import VideoPreviewCard from "../components/video-preview-card/video-preview-car
 import { Grid } from "../page.styles";
 
 import VideoPlayer from "./components/video-player/video-player";
-import { MetadataContainer, SaveButton, Title } from "./page.styles";
+import { MetadataContainer, RelatedVideosTitle, SaveButton, Title } from "./page.styles";
 
 export default function WatchPage() {
   const { videoId } = useParams();
@@ -46,6 +46,7 @@ export default function WatchPage() {
         </SaveButton>
       </MetadataContainer>
 
+      <RelatedVideosTitle>Related Videos</RelatedVideosTitle>
       <Grid>{relatedVideos?.map((video) => <VideoPreviewCard key={video.id.videoId} preview={video} />)}</Grid>
     </div>
   );
