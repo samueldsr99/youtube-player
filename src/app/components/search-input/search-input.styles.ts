@@ -5,7 +5,7 @@ import { media } from "@/ui/theme/breakpoints";
 
 export const Root = styled.form`
   margin-left: ${({ theme }) => theme.spacing(4)};
-  max-width: 400px;
+  max-width: 600px;
   display: flex;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.white};
