@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { format } from "date-fns";
 
@@ -12,6 +12,7 @@ import VideoPreviewCard from "../components/video-preview-card/video-preview-car
 import { Grid } from "../page.styles";
 
 import VideoPlayer from "./components/video-player/video-player";
+import type { LoaderData } from "./loader";
 import {
   ChannelNameLink,
   Metadata,
@@ -25,11 +26,13 @@ import {
 export default function WatchPage() {
   const { videoId } = useParams();
   const { addVideo, isVideoSaved, removeVideo } = useSavedVideos();
+  const initialData = useLoaderData() as LoaderData;
 
   const { data: video } = useQuery({
     queryKey: querykeys.youtube.get({ id: videoId as string }),
     queryFn: () => services.youtube.get({ id: videoId as string }),
     enabled: !!videoId,
+    initialData,
   });
 
   const relatedSearch = `${video?.owner} ${video?.title}`;
@@ -39,10 +42,6 @@ export default function WatchPage() {
     queryFn: () => services.youtube.search({ q: relatedSearch }),
     enabled: !!video,
   });
-
-  if (!video) {
-    return <div>Loading...</div>;
-  }
 
   const isSaved = isVideoSaved(videoId as string);
 

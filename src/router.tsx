@@ -1,6 +1,10 @@
 import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 
+// Loaders
+import watchLoader from "./app/watch/loader";
+import queryClient from "./lib/config/queryclient.config";
+
 // Outlets
 const IndexOutlet = lazy(() => import("./app/outlet"));
 
@@ -28,6 +32,7 @@ const router = createBrowserRouter([
             <WatchPage />
           </Suspense>
         ),
+        loader: watchLoader(queryClient),
       },
     ],
   },
