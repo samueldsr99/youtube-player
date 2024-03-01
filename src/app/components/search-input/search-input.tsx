@@ -20,7 +20,7 @@ export default function SearchInput({ onSearch }: SearchInputProps) {
 
   return (
     <Root onSubmit={handleSubmit((data) => onSearch?.(data.search))}>
-      <Input placeholder="Search" {...register("search")} />
+      <Input placeholder="Search" autoComplete="off" {...register("search")} />
       <SearchButton type="submit">
         <MagnifyingGlassIcon />
       </SearchButton>
