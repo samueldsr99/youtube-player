@@ -10,3 +10,7 @@ export const formatNumber = (value: number) => {
   }
   return value.toString();
 };
+
+export const removeSpaces = (value: string) => {
+  return value.replace(/\s/g, "");
+};

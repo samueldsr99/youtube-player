@@ -1,11 +1,30 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const Title = styled.h2`
+export const TitleLink = styled(Link)`
+  display: block;
   ${({ theme }) => theme.typography.variants.h2};
+  margin: ${({ theme }) => theme.spacing(2, 0)};
+`;
+
+export const ChannelNameLink = styled(Link)`
+  display: block;
+  ${({ theme }) => theme.typography.variants.body2};
+  margin: ${({ theme }) => theme.spacing(2, 0)};
+  color: ${({ theme }) => theme.colors.gray[700]};
+`;
+
+export const Metadata = styled.p`
+  ${({ theme }) => theme.typography.variants.caption};
+  margin: 0;
+
+  color: ${({ theme }) => theme.colors.gray[600]};
 `;
 
 export const RelatedVideosTitle = styled.h3`
   ${({ theme }) => theme.typography.variants.h3};
+
+  margin-top: ${({ theme }) => theme.spacing(10)};
 `;
 
 export const MetadataContainer = styled.div`

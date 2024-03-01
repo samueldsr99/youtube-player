@@ -48,7 +48,7 @@ const variants = {
   },
   body2: {
     fontSize: fontSizes.md,
-    fontWeight: fontWeights.medium,
+    fontWeight: fontWeights.semibold,
   },
   button: {
     fontSize: "1rem",

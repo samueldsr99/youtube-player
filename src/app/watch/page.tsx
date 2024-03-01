@@ -1,16 +1,18 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { format } from "date-fns";
 
 import services from "@/lib/api/services";
 import querykeys from "@/lib/querykeys";
 import { useSavedVideos } from "@/lib/store/saved-videos.store";
+import { formatNumber, removeSpaces } from "@/lib/utils";
 import SaveIcon from "@/ui/icons/save-icon";
 
 import VideoPreviewCard from "../components/video-preview-card/video-preview-card";
 import { Grid } from "../page.styles";
 
 import VideoPlayer from "./components/video-player/video-player";
-import { MetadataContainer, RelatedVideosTitle, SaveButton, Title } from "./page.styles";
+import { ChannelNameLink, Metadata, MetadataContainer, RelatedVideosTitle, SaveButton, TitleLink } from "./page.styles";
 
 export default function WatchPage() {
   const { videoId } = useParams();
@@ -39,10 +41,20 @@ export default function WatchPage() {
       <VideoPlayer video={video} />
 
       <MetadataContainer>
-        <Title>{video.title}</Title>
+        <div>
+          <TitleLink to={video.url} target="_blank">
+            {video.title}
+          </TitleLink>
+          <ChannelNameLink to={`https://youtube.com/@${removeSpaces(video.owner)}`} target="_blank">
+            {video.owner}
+          </ChannelNameLink>
+          <Metadata>
+            {formatNumber(Number(video.views))} views • {format(new Date(video.datePublished), "MMM d, yyyy")}
+          </Metadata>
+        </div>
         <SaveButton onClick={() => addVideo({ id: video.videoId, title: video.title })}>
           <SaveIcon />
-          Save
+          Watch Later
         </SaveButton>
       </MetadataContainer>
 
