@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import services from "@/lib/api/services";
 import querykeys from "@/lib/querykeys";
 
-import VideoPreview from "./components/video-preview-card";
+import VideoPreviewCard from "./components/video-preview-card";
 import VideoPreviewSkeleton from "./components/video-preview-skeleton/video-preview-skeleton";
 import { Grid, Root } from "./page.styles";
 
@@ -21,13 +21,17 @@ export default function IndexPage() {
     queryFn: () => services.youtube.search({ q: q }),
   });
 
+  const notFound = !isLoadingVideos && !Array.isArray(videos);
+
   return (
     <Root>
       <Grid>
         {isLoadingVideos ? (
           <LoadingState />
+        ) : notFound ? (
+          <div>Nothing to show</div>
         ) : (
-          videos?.map((video) => <VideoPreview key={video.id.videoId} preview={video} />)
+          videos?.map((video) => <VideoPreviewCard key={video.id.videoId} preview={video} />)
         )}
       </Grid>
     </Root>

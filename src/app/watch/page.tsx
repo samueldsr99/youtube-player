@@ -37,13 +37,15 @@ export default function WatchPage() {
 
   const relatedSearch = `${video?.owner} ${video?.title}`;
 
-  const { data: relatedVideos } = useQuery({
+  const { data: relatedVideos, isLoading: isLoadingRelatedVideos } = useQuery({
     queryKey: querykeys.youtube.search({ q: relatedSearch }),
     queryFn: () => services.youtube.search({ q: relatedSearch }),
     enabled: !!video,
   });
 
   const isSaved = isVideoSaved(videoId as string);
+
+  const notFoundRelatedVideos = !isLoadingRelatedVideos && !Array.isArray(relatedVideos);
 
   return (
     <div>
@@ -75,7 +77,11 @@ export default function WatchPage() {
       </MetadataContainer>
 
       <RelatedVideosTitle>Related Videos</RelatedVideosTitle>
-      <Grid>{relatedVideos?.map((video) => <VideoPreviewCard key={video.id.videoId} preview={video} />)}</Grid>
+      {notFoundRelatedVideos ? (
+        <div>Empty</div>
+      ) : (
+        <Grid>{relatedVideos?.map((video) => <VideoPreviewCard key={video.id.videoId} preview={video} />)}</Grid>
+      )}
     </div>
   );
 }
