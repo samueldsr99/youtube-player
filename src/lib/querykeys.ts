@@ -1,7 +1,4 @@
-import type {
-  GetVideoRequest,
-  SearchVideosRequest,
-} from "./api/services/youtube.types";
+import type { GetVideoRequest, SearchVideosRequest } from "./api/services/youtube.types";
 
 const querykeys = {
   youtube: {

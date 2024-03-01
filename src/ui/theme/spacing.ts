@@ -1,2 +1,1 @@
-export const spacing = (...args: number[]) =>
-  args.map((arg) => `${arg * 4}px`).join(" ");
+export const spacing = (...args: number[]) => args.map((arg) => `${arg * 4}px`).join(" ");

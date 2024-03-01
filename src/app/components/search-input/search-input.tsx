@@ -2,12 +2,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
-import {
-  Input,
-  MagnifyingGlassIcon,
-  Root,
-  SearchButton,
-} from "./search-input.styles";
+import { Input, MagnifyingGlassIcon, Root, SearchButton } from "./search-input.styles";
 
 export type SearchInputProps = {
   onSearch?: (q: string) => void;
