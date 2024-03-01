@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-export const Title = styled.h1`
-  ${({ theme }) => theme.typography.variants.h1};
+export const Title = styled.h2`
+  ${({ theme }) => theme.typography.variants.h2};
 `;
 
-export const ActionsContainer = styled.div`
+export const MetadataContainer = styled.div`
   margin-top: ${({ theme }) => theme.spacing(2)};
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: space-between;
 `;
 
 export const SaveButton = styled.button`

@@ -1,3 +1,5 @@
+import { useSavedVideos } from "@/lib/store/saved-videos.store";
+
 import {
   Aside,
   Divider,
@@ -15,20 +17,9 @@ import {
   YoutubeIcon,
 } from "./sidebar.styles";
 
-const links = [
-  {
-    id: 1,
-    title: "Video 1",
-    url: "/",
-  },
-  {
-    id: 2,
-    title: "Video 2 with loooooooong loooooooong loooooooong loooooooong text",
-    url: "/about",
-  },
-];
-
 const Sidebar = () => {
+  const { savedVideos, removeVideo } = useSavedVideos();
+
   return (
     <Aside>
       <HomeLinkWrapper to="/">
@@ -47,10 +38,10 @@ const Sidebar = () => {
       <SavedVideosContainer>
         <SavedVideosTitle>Saved videos</SavedVideosTitle>
         <SavedVideosList>
-          {links.map((link) => (
-            <SavedVideoItem key={link.id}>
-              <LinkItem to={link.url}>{link.title}</LinkItem>
-              <IconButton onClick={() => alert("Hi")}>
+          {savedVideos.map((video) => (
+            <SavedVideoItem key={video.id}>
+              <LinkItem to={`/watch/${video.id}`}>{video.title}</LinkItem>
+              <IconButton onClick={() => removeVideo(video.id)}>
                 <XIcon />
               </IconButton>
             </SavedVideoItem>
