@@ -12,11 +12,19 @@ import VideoPreviewCard from "../components/video-preview-card/video-preview-car
 import { Grid } from "../page.styles";
 
 import VideoPlayer from "./components/video-player/video-player";
-import { ChannelNameLink, Metadata, MetadataContainer, RelatedVideosTitle, SaveButton, TitleLink } from "./page.styles";
+import {
+  ChannelNameLink,
+  Metadata,
+  MetadataContainer,
+  RelatedVideosTitle,
+  SaveButton,
+  TitleLink,
+  XIcon,
+} from "./page.styles";
 
 export default function WatchPage() {
   const { videoId } = useParams();
-  const { addVideo } = useSavedVideos();
+  const { addVideo, isVideoSaved, removeVideo } = useSavedVideos();
 
   const { data: video } = useQuery({
     queryKey: querykeys.youtube.get({ id: videoId as string }),
@@ -36,6 +44,8 @@ export default function WatchPage() {
     return <div>Loading...</div>;
   }
 
+  const isSaved = isVideoSaved(videoId as string);
+
   return (
     <div>
       <VideoPlayer video={video} />
@@ -52,10 +62,17 @@ export default function WatchPage() {
             {formatNumber(Number(video.views))} views • {format(new Date(video.datePublished), "MMM d, yyyy")}
           </Metadata>
         </div>
-        <SaveButton onClick={() => addVideo({ id: video.videoId, title: video.title })}>
-          <SaveIcon />
-          Watch Later
-        </SaveButton>
+        {isSaved ? (
+          <SaveButton onClick={() => removeVideo(video.videoId)}>
+            <XIcon />
+            Remove
+          </SaveButton>
+        ) : (
+          <SaveButton onClick={() => addVideo({ id: video.videoId, title: video.title })}>
+            <SaveIcon />
+            Watch Later
+          </SaveButton>
+        )}
       </MetadataContainer>
 
       <RelatedVideosTitle>Related Videos</RelatedVideosTitle>

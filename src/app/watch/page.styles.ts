@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+import BaseXIcon from "@/ui/icons/x-icon";
+
 export const TitleLink = styled(Link)`
   display: block;
   ${({ theme }) => theme.typography.variants.h2};
@@ -49,4 +51,9 @@ export const SaveButton = styled.button`
   &:hover {
     background-color: ${({ theme }) => theme.colors.gray[200]};
   }
+`;
+
+export const XIcon = styled(BaseXIcon)`
+  width: ${({ theme }) => theme.spacing(6)};
+  height: ${({ theme }) => theme.spacing(6)};
 `;
