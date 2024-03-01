@@ -15,7 +15,6 @@ export const Main = styled.main`
 
 export const Content = styled.div`
   padding: ${({ theme }) => theme.spacing(8, 4)};
-  height: 100%;
 `;
 
 export const Header = styled.header`
