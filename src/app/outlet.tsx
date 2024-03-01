@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { Outlet, useNavigate } from "react-router";
 
 import ScrollToTop from "./components/scroll-to-top/scroll-to-top";
@@ -7,20 +8,20 @@ import { Content, Header, Main, Root } from "./outlet.styles";
 
 export default function IndexOutlet() {
   const navigate = useNavigate();
+  const mainRef = useRef<HTMLDivElement>(null);
 
   return (
     <Root>
       <Sidebar />
-      <Main>
+      <Main ref={mainRef}>
         <Header>
           <SearchInput onSearch={(q) => navigate({ pathname: "/", search: q ? `?q=${q}` : "" })} />
         </Header>
         <Content>
           <Outlet />
         </Content>
+        <ScrollToTop targetRef={mainRef} />
       </Main>
-
-      <ScrollToTop />
     </Root>
   );
 }

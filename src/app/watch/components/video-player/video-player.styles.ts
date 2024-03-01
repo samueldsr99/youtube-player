@@ -8,6 +8,7 @@ export const Root = styled.div`
 export const Iframe = styled.iframe`
   border: none;
   width: 100%;
+  height: auto;
   aspect-ratio: 16 / 9;
 
   border-radius: ${({ theme }) => theme.spacing(6)};

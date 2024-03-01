@@ -7,5 +7,5 @@ export type VideoPlayerProps = {
 };
 
 export default function VideoPlayer({ video }: VideoPlayerProps) {
-  return <Iframe src={`https://www.youtube.com/embed/${video.videoId}`} allowFullScreen />;
+  return <Iframe src={`https://www.youtube.com/embed/${video.videoId}`} allowFullScreen width={300} height={300} />;
 }

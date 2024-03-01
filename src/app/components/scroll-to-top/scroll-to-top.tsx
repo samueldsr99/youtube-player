@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 
-const ScrollToTop = () => {
+const ScrollToTop = ({ targetRef }: { targetRef: React.RefObject<HTMLDivElement> }) => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    targetRef.current?.scrollTo(0, 0);
+  }, [pathname, targetRef]);
 
   return <></>;
 };
