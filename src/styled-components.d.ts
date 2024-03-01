@@ -1,3 +1,4 @@
+import { animations } from "./ui/theme/animations";
 import { breakpoints, media } from "./ui/theme/breakpoints";
 import { colors } from "./ui/theme/colors";
 import { mixins } from "./ui/theme/mixins";
@@ -12,5 +13,6 @@ declare module "styled-components" {
     media: typeof media;
     spacing: typeof spacing;
     mixins: typeof mixins;
+    animations: typeof animations;
   }
 }
