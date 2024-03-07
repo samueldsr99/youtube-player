@@ -16,6 +16,10 @@ const Button = styled.button<ButtonProps>`
   cursor: pointer;
   ${({ $fullWidth }) => $fullWidth && "width: 100%;"}
   ${({ theme }) => theme.typography.variants.button};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 
   ${({ $size = "md", theme }) => {
     return {
@@ -34,9 +38,6 @@ const Button = styled.button<ButtonProps>`
       icon: `
         width: 35px;
         height: 35px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         border-radius: 50%;
       `,
     }[$size];

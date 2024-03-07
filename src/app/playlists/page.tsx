@@ -14,7 +14,7 @@ export default function PlaylistsPage() {
         <PlaylistsList>
           {playlists.map((playlist) => (
             <PlaylistItem key={playlist.id}>
-              <PlaylistCard id={playlist.id} name={playlist.name} to="#" />
+              <PlaylistCard id={playlist.id} name={playlist.name} to={`/playlists/${playlist.id}`} />
             </PlaylistItem>
           ))}
         </PlaylistsList>

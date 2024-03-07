@@ -4,28 +4,18 @@ import { format } from "date-fns";
 
 import services from "@/lib/api/services";
 import querykeys from "@/lib/querykeys";
-import { useSavedVideos } from "@/lib/store/saved-videos.store";
 import { formatNumber, removeSpaces } from "@/lib/utils";
-import SaveIcon from "@/ui/icons/save-icon";
 
 import VideoPreviewCard from "../components/video-preview-card/video-preview-card";
 import { Grid } from "../page.styles";
 
 import VideoPlayer from "./components/video-player/video-player";
+import WatchLaterDropdown from "./components/watch-later-dropdown/watch-later-dropdown";
 import type { LoaderData } from "./loader";
-import {
-  ChannelNameLink,
-  Metadata,
-  MetadataContainer,
-  RelatedVideosTitle,
-  SaveButton,
-  TitleLink,
-  XIcon,
-} from "./page.styles";
+import { ChannelNameLink, Metadata, MetadataContainer, RelatedVideosTitle, TitleLink } from "./page.styles";
 
 export default function WatchPage() {
   const { videoId } = useParams();
-  const { addVideo, isVideoSaved, removeVideo } = useSavedVideos();
   const initialData = useLoaderData() as LoaderData;
 
   const { data: video } = useQuery({
@@ -42,8 +32,6 @@ export default function WatchPage() {
     queryFn: () => services.youtube.search({ q: relatedSearch }),
     enabled: !!video,
   });
-
-  const isSaved = isVideoSaved(videoId as string);
 
   const notFoundRelatedVideos = !isLoadingRelatedVideos && !Array.isArray(relatedVideos);
 
@@ -63,17 +51,7 @@ export default function WatchPage() {
             {formatNumber(Number(video.views))} views • {format(new Date(video.datePublished), "MMM d, yyyy")}
           </Metadata>
         </div>
-        {isSaved ? (
-          <SaveButton onClick={() => removeVideo(video.videoId)}>
-            <XIcon />
-            Remove
-          </SaveButton>
-        ) : (
-          <SaveButton onClick={() => addVideo({ id: video.videoId, title: video.title })}>
-            <SaveIcon />
-            Watch Later
-          </SaveButton>
-        )}
+        <WatchLaterDropdown video={video} />
       </MetadataContainer>
 
       <RelatedVideosTitle>Related Videos</RelatedVideosTitle>

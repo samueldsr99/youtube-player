@@ -5,6 +5,9 @@ const querykeys = {
     search: (i: SearchVideosRequest) => ["search", i],
     get: (i: GetVideoRequest) => ["get", i],
   },
+  playlists: {
+    get: (id: string) => ["playlist", id],
+  },
 };
 
 export default querykeys;

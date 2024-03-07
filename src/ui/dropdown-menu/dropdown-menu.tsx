@@ -84,4 +84,6 @@ const Trigger = styled(DropdownMenu.Trigger)``;
 
 const Portal = styled(DropdownMenu.Portal)``;
 
-export { CheckboxItem, Content, DropdownMenu, Item, Portal, RadioItem, Root, SubContent, SubTrigger, Trigger };
+const Sub = styled(DropdownMenu.Sub)``;
+
+export { CheckboxItem, Content, DropdownMenu, Item, Portal, RadioItem, Root, Sub, SubContent, SubTrigger, Trigger };
