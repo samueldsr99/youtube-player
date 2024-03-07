@@ -32,11 +32,12 @@ export const RelatedVideosTitle = styled.h3`
 export const MetadataContainer = styled.div`
   margin-top: ${({ theme }) => theme.spacing(2)};
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
 `;
 
 export const SaveButton = styled.button`
+  flex-shrink: 0;
   ${({ theme }) => theme.typography.variants.button};
   cursor: pointer;
   padding: ${({ theme }) => theme.spacing(2, 3)};
