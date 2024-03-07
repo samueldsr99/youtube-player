@@ -4,6 +4,7 @@ import BaseMagnifyingGlassIcon from "@/ui/icons/magnifying-glass-icon";
 import { media } from "@/ui/theme/breakpoints";
 
 export const Root = styled.form`
+  flex: 1;
   margin-left: ${({ theme }) => theme.spacing(4)};
   max-width: 600px;
   display: flex;

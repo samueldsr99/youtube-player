@@ -43,7 +43,7 @@ const Button = styled.button<ButtonProps>`
   }}
 
   transition: background-color 0.2s ease, transform 0.2s ease;
-  ${({ $variant = "gray", theme }) => `
+  ${({ $variant = "secondary", theme }) => `
     background-color: ${theme.colors[$variant].default};
     color: ${theme.colors[$variant].foreground};
 

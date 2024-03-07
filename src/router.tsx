@@ -11,6 +11,7 @@ const IndexOutlet = lazy(() => import("./app/outlet"));
 // Pages
 const IndexPage = lazy(() => import("./app/page"));
 const WatchPage = lazy(() => import("./app/watch/page"));
+const NewPlaylistPage = lazy(() => import("./app/playlists/new/page"));
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,14 @@ const router = createBrowserRouter([
           </Suspense>
         ),
         loader: watchLoader(queryClient),
+      },
+      {
+        path: "/playlists/new",
+        element: (
+          <Suspense>
+            <NewPlaylistPage />
+          </Suspense>
+        ),
       },
     ],
   },

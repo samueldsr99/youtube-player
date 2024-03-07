@@ -19,6 +19,9 @@ export const Content = styled.div`
 
 export const Header = styled.header`
   position: sticky;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   top: 0;
   z-index: 1000;
   padding: ${({ theme }) => theme.spacing(2, 4)};
