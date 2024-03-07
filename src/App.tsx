@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import { RouterProvider } from "react-router";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -16,6 +17,7 @@ export default function App() {
         <RouterProvider router={router} />
       </ThemeProvider>
       <ReactQueryDevtools />
+      <Toaster position="bottom-center" />
     </QueryClientProvider>
   );
 }

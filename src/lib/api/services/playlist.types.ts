@@ -11,7 +11,7 @@ export type GetPlaylistsResponse = Playlist;
 export type PostPlaylistRequest = {
   name: string;
 };
-export type PostPlaylistResponse = void;
+export type PostPlaylistResponse = { id: string };
 
 export type PutPlaylistRequest = {
   id: string;
