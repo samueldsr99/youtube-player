@@ -4,9 +4,10 @@ import { styled } from "styled-components";
 import BaseXIcon from "@/ui/icons/x-icon";
 
 export const Root = styled.div`
+  max-width: 600px;
+  border-radius: ${({ theme }) => theme.spacing(3)};
   padding: ${({ theme }) => theme.spacing(4)};
   border: 1px solid ${({ theme }) => theme.colors.gray[200]};
-  border-radius: ${({ theme }) => theme.spacing(1)};
 
   display: flex;
   justify-content: space-between;

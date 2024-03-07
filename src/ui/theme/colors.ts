@@ -12,6 +12,16 @@ export const colors = {
     hover: "#e8e8e8",
     foreground: "#000000",
   },
+  purple: {
+    default: "#8e44ad",
+    hover: "#6c3483",
+    foreground: "#ffffff",
+  },
+  blue: {
+    default: "#3498db",
+    hover: "#2980b9",
+    foreground: "#ffffff",
+  },
   success: {
     default: "#4caf50",
     hover: "#388e3c",
