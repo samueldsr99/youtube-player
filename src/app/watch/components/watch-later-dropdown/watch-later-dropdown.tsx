@@ -7,11 +7,12 @@ import querykeys from "@/lib/querykeys";
 import { usePlaylists } from "@/lib/store/playlists.store";
 import { useSavedVideos } from "@/lib/store/saved-videos.store";
 import { DropdownMenu } from "@/ui";
+import ArrowDownIcon from "@/ui/icons/arrow-down-icon";
 import SaveIcon from "@/ui/icons/save-icon";
 
 import { SaveButton, XIcon } from "../../page.styles";
 
-import { Entry } from "./watch-later-dropdown.styles";
+import { Entry, FlexedContent } from "./watch-later-dropdown.styles";
 
 export interface WatchLaterDropdownProps {
   video: Video;
@@ -65,7 +66,10 @@ export default function WatchLaterDropdown({ video }: WatchLaterDropdownProps) {
 
           <DropdownMenu.Sub>
             <DropdownMenu.SubTrigger asChild>
-              <Entry>Save to playlist</Entry>
+              <FlexedContent>
+                <span>Save to playlist</span>
+                <ArrowDownIcon />
+              </FlexedContent>
             </DropdownMenu.SubTrigger>
 
             <DropdownMenu.SubContent sideOffset={2} alignOffset={-5}>
