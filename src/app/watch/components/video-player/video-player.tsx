@@ -1,11 +1,21 @@
+import Youtube from "react-youtube";
+
 import { Video } from "@/lib/models/video";
 
-import { Iframe } from "./video-player.styles";
+import "./video-player.css";
 
 export type VideoPlayerProps = {
   video: Video;
+  onEnded?: () => void;
 };
 
-export default function VideoPlayer({ video }: VideoPlayerProps) {
-  return <Iframe src={`https://www.youtube.com/embed/${video.videoId}`} allowFullScreen width={300} height={300} />;
+export default function VideoPlayer({ video, onEnded }: VideoPlayerProps) {
+  return (
+    <Youtube
+      videoId={video.videoId}
+      onEnd={onEnded}
+      className="youtubeContainer"
+      opts={{ playerVars: { autoplay: 1 } }}
+    />
+  );
 }

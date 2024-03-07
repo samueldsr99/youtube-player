@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import { Link, useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
@@ -25,6 +25,7 @@ const EmptyState = () => (
 export default function PlaylistDetailsPage() {
   const { id, playlist: initialData } = useLoaderData() as LoaderData;
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   const { data: playlist } = useQuery({
     queryKey: querykeys.playlists.get(id),
@@ -33,8 +34,17 @@ export default function PlaylistDetailsPage() {
   });
 
   const currentVideoIndex = Number(searchParams.get("current") ?? "0");
+  const isLastVideo = currentVideoIndex === playlist.videos.length - 1;
 
   const isEmpty = !playlist.videos.length;
+
+  const handleVideoEnded = () => {
+    if (isLastVideo) {
+      navigate(`/playlists/${id}`);
+    } else {
+      navigate(`/playlists/${id}?current=${currentVideoIndex + 1}`);
+    }
+  };
 
   return (
     <Root>
@@ -45,7 +55,7 @@ export default function PlaylistDetailsPage() {
         </>
       ) : (
         <>
-          <VideoPlayer video={playlist.videos[currentVideoIndex]} />
+          <VideoPlayer video={playlist.videos[currentVideoIndex]} onEnded={handleVideoEnded} />
         </>
       )}
     </Root>
