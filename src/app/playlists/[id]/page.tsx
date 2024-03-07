@@ -22,6 +22,18 @@ const EmptyState = () => (
   </EmptyContainer>
 );
 
+export const getBoundedIndex = (index: number, length: number) => {
+  if (index < 0) {
+    return 0;
+  }
+
+  if (index > length - 1) {
+    return length - 1;
+  }
+
+  return index;
+};
+
 export default function PlaylistDetailsPage() {
   const { id, playlist: initialData } = useLoaderData() as LoaderData;
   const [searchParams] = useSearchParams();
@@ -33,7 +45,8 @@ export default function PlaylistDetailsPage() {
     initialData,
   });
 
-  const currentVideoIndex = Number(searchParams.get("current") ?? "0");
+  const currentVideoIndex = getBoundedIndex(Number(searchParams.get("current") ?? "0"), playlist.videos.length);
+
   const isLastVideo = currentVideoIndex === playlist.videos.length - 1;
 
   const isEmpty = !playlist.videos.length;
