@@ -1,4 +1,7 @@
+import { useLocation } from "react-router";
+
 import { useSavedVideos } from "@/lib/store/saved-videos.store";
+import PlaylistIcon from "@/ui/icons/playlist-icon";
 
 import {
   Aside,
@@ -19,6 +22,9 @@ import {
 
 const Sidebar = () => {
   const { savedVideos, removeVideo } = useSavedVideos();
+  const { pathname } = useLocation();
+
+  const isActive = (path: string) => pathname === path;
 
   return (
     <Aside>
@@ -27,9 +33,13 @@ const Sidebar = () => {
       </HomeLinkWrapper>
 
       <NavigationLinks>
-        <NavigationLinkItem to="/" $isActive>
+        <NavigationLinkItem to="/" $isActive={isActive("/")}>
           <HomeIcon />
           Home
+        </NavigationLinkItem>
+        <NavigationLinkItem to="/playlists" $isActive={isActive("/playlists")}>
+          <PlaylistIcon />
+          Playlists
         </NavigationLinkItem>
       </NavigationLinks>
 

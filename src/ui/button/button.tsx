@@ -32,8 +32,8 @@ const Button = styled.button<ButtonProps>`
         font-size: ${theme.typography.fontSizes.lg};
       `,
       icon: `
-        width: 55px;
-        height: 55px;
+        width: 35px;
+        height: 35px;
         display: flex;
         align-items: center;
         justify-content: center;

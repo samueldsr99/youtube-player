@@ -33,6 +33,10 @@ export const HomeIcon = styled(BaseHomeIcon)`
 
 export const NavigationLinks = styled.nav`
   margin-top: ${({ theme }) => theme.spacing(6)};
+
+  & > * + * {
+    margin-top: ${({ theme }) => theme.spacing(2)};
+  }
 `;
 
 export const SavedVideosContainer = styled.div``;

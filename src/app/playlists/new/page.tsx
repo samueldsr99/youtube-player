@@ -31,7 +31,7 @@ export default function NewPlaylistPage() {
     onSuccess: (data) => {
       addPlaylist({ id: data.id, name });
       toast.success("Playlist created");
-      navigate("/");
+      navigate("/playlists");
     },
     onError: () => {
       toast.error("Something went wrong");
@@ -49,6 +49,7 @@ export default function NewPlaylistPage() {
       <form onSubmit={onSubmit}>
         <FormFields>
           <Input
+            autoComplete="off"
             placeholder="Name"
             $fullWidth
             disabled={isPending}
