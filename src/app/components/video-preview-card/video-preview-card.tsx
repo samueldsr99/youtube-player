@@ -1,7 +1,8 @@
 import { VideoPreview } from "@/lib/models/video-preview";
 import { formatNumber } from "@/lib/utils";
+import PlayIcon from "@/ui/icons/play-icon";
 
-import { ChannelName, Img, Root, Title, Views } from "./video-preview-card.styles";
+import { ChannelName, HoverableOverlay, ImageContainer, Img, Root, Title, Views } from "./video-preview-card.styles";
 
 export interface VideoPreviewCardProps {
   preview: VideoPreview;
@@ -10,7 +11,13 @@ export interface VideoPreviewCardProps {
 export default function VideoPreviewCard({ preview }: VideoPreviewCardProps) {
   return (
     <Root to={`/watch/${preview.id.videoId}`}>
-      <Img src={preview.snippet.thumbnails.url} alt={preview.snippet.title} width={300} height={220} />
+      <ImageContainer>
+        <HoverableOverlay>
+          <PlayIcon />
+          Watch
+        </HoverableOverlay>
+        <Img src={preview.snippet.thumbnails.url} alt={preview.snippet.title} width={300} height={220} />
+      </ImageContainer>
 
       <div>
         <Title>{preview.title}</Title>

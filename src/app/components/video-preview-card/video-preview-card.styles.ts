@@ -6,6 +6,33 @@ export const Root = styled(Link)`
   display: block;
 `;
 
+export const ImageContainer = styled.div`
+  position: relative;
+  overflow: hidden;
+  border-radius: ${({ theme }) => theme.spacing(3)};
+  height: 200px;
+`;
+
+export const HoverableOverlay = styled.div`
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 1.5rem;
+
+  opacity: 0;
+  transition: opacity 0.2s;
+
+  ${Root}:hover & {
+    opacity: 1;
+  }
+`;
+
 export const Img = styled.img`
   width: 100%;
   height: 200px;
