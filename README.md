@@ -1,30 +1,39 @@
-# React + TypeScript + Vite
+# Youtube player
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<img src="./docs/bg.png" width="100%">
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+    - [Introduction](#introduction)
+    - [Stack](#stack)
+    - [Installation](#installation)
 
-## Expanding the ESLint configuration
+## Introduction
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Simple Youtube player presented as final project for the module "React Web" at [Harbour.Space](https://harbour.space/). It uses the Youtube API provided in class to fetch videos. It also supports playlists management and saved videos storage.
 
-- Configure the top-level `parserOptions` property like this:
+## Stack
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [Styled Components](https://styled-components.com/)
+- [React Query](https://react-query.tanstack.com/)
+- [React Hook Form](https://react-hook-form.com/)
+
+## Installation
+
+```bash
+# 1. Clone the repository
+git clone
+
+cd youtube-player
+
+# 2. Install the dependencies (pnpm preferred, but npm or yarn will work as well)
+pnpm install
+
+# 3. Copy the .env.example file to .env
+cp .env.example .env
+
+# 4. Run the development server
+pnpm dev
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
